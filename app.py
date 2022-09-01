@@ -10,7 +10,7 @@ model = pickle.load(open('model_classifier.pkl', 'rb'))
 def home():
     return render_template('Index.html')
 
-@app.route('/predict',methods=['POST','GET'])
+@app.route('/predict',methods=['POST'])
 def predict():
 
     int_features = [float(x) for x in request.form.values()]
@@ -20,11 +20,11 @@ def predict():
     
     if prediction==0:
         return render_template('Index.html',
-                               prediction_text='Survived'.format(prediction),
+                               prediction_text='Survived'.format(prediction[0]),
                                )
     else:
         return render_template('Index.html',
-                               prediction_text='Not Survived'.format(prediction),
+                               prediction_text='Not Survived'.format(prediction[0]),
                               )
 
 
