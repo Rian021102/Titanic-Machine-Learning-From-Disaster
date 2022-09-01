@@ -8,7 +8,7 @@ model = pickle.load(open('model_classifier.pkl', 'rb'))
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('Index.html')
 
 @app.route('/predict',methods=['POST','GET'])
 def predict():
@@ -19,11 +19,11 @@ def predict():
 
     
     if prediction==0:
-        return render_template('index.html',
+        return render_template('Index.html',
                                prediction_text='Survived'.format(prediction),
                                )
     else:
-        return render_template('index.html',
+        return render_template('Index.html',
                                prediction_text='Not Survived'.format(prediction),
                               )
 
