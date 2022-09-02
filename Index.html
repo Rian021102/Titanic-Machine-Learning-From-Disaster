@@ -1,34 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-
-scale=1.0">
-  <title>H8 Model Deployment</title>
- 
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
+
 <body>
-    <div class="form">
-         <h1>Titanic Machine Learning from Disaster</h1>
-         <form action="{{url_for('predict')}}" method="post">
-             <input type="text" name="Pclass" placeholder="Passenger Class" required="required" />
-             <input type="text" name="Sex" placeholder="Sex" required="required" />
-             <input type="text" name="Age" placeholder="Age" required="required" />
-             <input type="text" name="SibSp" placeholder="Sibling" required="required" />
-             <input type="text" name="Parch" placeholder="Parents" required="required" />
-             <input type="text" name="Fare" placeholder="Fare" required="required" />
-             <input type="text" name="Embarked" placeholder="Embarked" required="required" />
-             <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-         </form>
+ <div class="login">
+	<h2>Predict of survival</h2>
+         <h5.>Please use- Ticket class(1,2,3),Port of Embarkation(0,1,2) </h5.>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="Pclass" placeholder="Ticket class" required="required" />
+        <input type="text" name="Age" placeholder="Age" required="required" />
+		<input type="text" name="Fare" placeholder="Passenger fare" required="required" />
+		<input type="text" name="Embarked" placeholder="Port of Embarkation" required="required" />
+ 		<input type="text" name="SbSip" placeholder="No. of family members" required="required" />
+ 		<input type="text" name="Parch" placeholder="Parents" required="required" />
+     <input type="text" name="Sex" placeholder="Male or not" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
 
 
-         <p class="message">{{prediction_type}}</p>
-
-
-
-
-    </div>
 </body>
 </html>
-         
